@@ -7,13 +7,15 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          command: docker build -t naari3/sample_with_redis:${CIRCLE_TAG} .
+          command: docker build -t naari3/sample_with_redis:latest .
       - run:
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
       - run:
-          command: docker push naari3/sample_with_redis:${CIRCLE_TAG}
+          command: docker tag naari3/sample_with_redis:latest naari3/sample_with_redis:${CIRCLE_TAG}
       - run:
           command: docker push naari3/sample_with_redis:latest
+      - run:
+          command: docker push naari3/sample_with_redis:${CIRCLE_TAG}
 
 workflows:
   version: 2
