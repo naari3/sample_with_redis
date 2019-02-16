@@ -2,6 +2,6 @@
 
 class SampleController < ApplicationController
   def index
-    @aaa = 'aaa'
+    @aaa = Rails.cache.fetch('aa', expires_in: 3) { Time.now.to_s }
   end
 end
