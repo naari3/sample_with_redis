@@ -1,24 +1,17 @@
-# README
+# Sample with redis
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is sample with redis for my container practicing
 
-Things you may want to cover:
+## System dependencies
 
-* Ruby version
+- Ruby 2.x
+- Node.js v8.x
+- Redis
 
-* System dependencies
+## Environment Variables
 
-* Configuration
+### `REDIS_URL`
 
-* Database creation
+### `SECRET_KEY_BASE`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### `RAILS_LOG_TO_STDOUT`
