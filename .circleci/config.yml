@@ -12,6 +12,8 @@ jobs:
           command: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
       - run:
           command: docker push naari3/sample_with_redis:${CIRCLE_TAG}
+      - run:
+          command: docker push naari3/sample_with_redis:latest
 
 workflows:
   version: 2
