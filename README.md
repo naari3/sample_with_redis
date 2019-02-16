@@ -15,3 +15,5 @@ This app is sample with redis for my container practicing
 ### `SECRET_KEY_BASE`
 
 ### `RAILS_LOG_TO_STDOUT`
+
+### `RECEIVE_VIA_SOCKET`
