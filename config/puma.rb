@@ -14,7 +14,7 @@ threads threads_count, threads_count
 # Specifies receive via socket or not.
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-if ENV.fetch('RECEIVE_VIA_SOCKET').to_i.zero?
+if ENV.fetch('RECEIVE_VIA_SOCKET') { false }
   bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
 else
   port ENV.fetch('PORT') { 3000 }
