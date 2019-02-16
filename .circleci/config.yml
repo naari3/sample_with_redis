@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  buildh:
+  build:
     docker:
       - image: docker:17.07.0-ce-git
     steps:
