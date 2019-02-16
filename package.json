@@ -1,0 +1,5 @@
+{
+  "name": "sample_with_redis",
+  "private": true,
+  "dependencies": {}
+}
