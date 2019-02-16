@@ -1,0 +1,36 @@
+version: '3'
+services:
+
+  redis:
+    restart: always
+    image: redis:4.0-alpine
+    networks:
+      - internal_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+    volumes:
+      - ./redis:/data
+
+  web:
+    build: .
+    image: naari3/sample_with_redis
+    restart: always
+    environment:
+      REDIS_URL: redis://redis:6379
+      SECRET_KEY_BASE: 96000ccf494084bd30f10cbf45029045d6b02c9a65192448cdfbb35ea0454b4a8fe73d3aeae4c43958f731867fc88f125d16d2d82bed65d5f9f6e4cb6ef3d416
+      RAILS_LOG_TO_STDOUT: 'true'
+    command: ash -c "rm -f /sample/tmp/pids/server.pid; bundle exec rails s -p 3000 -b '0.0.0.0'"
+    networks:
+      - external_network
+      - internal_network
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider localhost:3000 || exit 1"]
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - redis
+
+networks:
+  external_network:
+  internal_network:
+    internal: true
