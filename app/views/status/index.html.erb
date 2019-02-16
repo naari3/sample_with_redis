@@ -1,0 +1,5 @@
+<p>current status: <%= @status =%></p>
+
+<%= form_tag(status_toggle_path, method: :post) do %>
+  <%= submit_tag 'toggle' %>
+<% end %>
